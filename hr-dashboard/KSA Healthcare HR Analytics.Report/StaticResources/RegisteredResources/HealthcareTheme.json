@@ -1,0 +1,105 @@
+{
+  "name": "Contoso Health KSA",
+  "dataColors": [
+    "#0E7C7B",
+    "#0B4F6C",
+    "#17A398",
+    "#5AB9A8",
+    "#F4A259",
+    "#E76F51",
+    "#8AB17D",
+    "#9C89B8",
+    "#C44536",
+    "#3D5A80"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1B2A33",
+  "tableAccent": "#0E7C7B",
+  "good": "#1E9E6A",
+  "neutral": "#F4A259",
+  "bad": "#C44536",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#0B4F6C"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#3B4A54"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 28,
+      "color": "#0E7C7B"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#0B4F6C"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#DCE7E7"
+              }
+            },
+            "radius": 10
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#1B2A33"
+              }
+            },
+            "position": "Outer",
+            "preset": "BottomRight",
+            "transparency": 92
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#0B4F6C"
+              }
+            },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "outspacePane": [
+          {
+            "backgroundColor": {
+              "solid": {
+                "color": "#F3F7F7"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
