@@ -88,5 +88,5 @@ Dimensional modelling · DAX (time intelligence, point-in-time measures) · Powe
 
 ## Author
 
-Mohammad Amir Khan · [LinkedIn](https://www.linkedin.com/in/ameer-k-a31363235/) · [GitHub](https://github.com/amirator)
+Mohammad Amir Khan · [LinkedIn](https://www.linkedin.com/in/amir-khan-a31363235/) · [GitHub](https://github.com/amirator)
 Portfolio project built on synthetic data. Not affiliated with any employer.
