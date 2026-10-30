@@ -774,6 +774,8 @@ write(f"{NAME}.SemanticModel/.platform", {
     "config": {"version": "2.0", "logicalId": str(uuid.uuid4())}})
 
 write(f"{NAME}.SemanticModel/definition.pbism", {"version": "4.0", "settings": {}})
+from rls import roles_tmsl
+model_bim["model"]["roles"] = roles_tmsl()  # row-level security roles (see rls.py)
 write(f"{NAME}.SemanticModel/model.bim", model_bim)
 
 write(".gitignore", "*.pbi/\n.pbi/\ncache.abf\n", raw=True)

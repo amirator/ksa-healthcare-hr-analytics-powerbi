@@ -44,11 +44,31 @@ A ready-to-open Power BI Project for HR analytics in a multi-site Saudi healthca
 cd hr-dashboard
 python build_pbip.py          # rebuilds data, model, report and theme (deterministic, seed 42)
 python validate.py            # JSON, visual-to-model references, measures, M expressions, row counts
+python tests/test_rls.py      # row-level security roles (7 unittest tests)
 pip install openpyxl
 python excel/export_data.py   # writes excel/HR_Data.xlsx (one Excel table per entity)
 ```
 
 To change the scenario, edit the constants at the top of `build_pbip.py` (facilities, departments, salary bands, headcount, Saudization shares) and re-run.
+
+## Row-level security (RLS)
+
+The semantic model (`model.bim`) defines 5 RLS roles in standard TMSL (`roles` with `modelPermission: read` and DAX `filterExpression`), the same format Power BI Desktop writes from **Modeling > Manage roles**. The roles are defined in `hr-dashboard/rls.py`, and `build_pbip.py` writes them into the model.
+
+| Role | DAX filter | Visible employees / requisitions / training / leave |
+|---|---|---|
+| HR Director | none (full access) | 680 / 170 / 620 / 760 |
+| Region Manager - Western | `DimFacility: [Region] = "Western"` | 402 / 109 / 375 / 450 |
+| Region Manager - Central | `DimFacility: [Region] = "Central"` | 205 / 46 / 177 / 228 |
+| Region Manager - Eastern | `DimFacility: [Region] = "Eastern"` | 73 / 15 / 68 / 82 |
+| Clinical Division Manager | `DimDepartment: [Division] = "Clinical"` | 437 / 117 / 404 / 483 |
+
+Filters on the dimension tables flow to `Employees` and `Recruitment`, and from `Employees` to `Training` and `Leave`, through the model's single-direction relationships.
+
+**What is and isn't verified:**
+- `python hr-dashboard/tests/test_rls.py` (standard-library `unittest`, 7 tests) checks two things. First, the roles in `model.bim` match `rls.py` and reference real tables, columns and data values. Second, a Python emulation of each filter, propagated along the model's relationships, returns only that role's rows. The three region roles are disjoint and together cover every row.
+- The roles have **not** been opened or tested in Power BI Desktop ("View as role") or published to the Power BI Service, and no users are assigned to roles. Treat the emulation as a check of the filter logic, not of the Power BI engine.
+- The roles are static. Dynamic RLS (`USERPRINCIPALNAME()` with a user-to-facility mapping table) is not implemented.
 
 ## Excel VBA edition (Windows + Excel)
 

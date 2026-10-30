@@ -1477,6 +1477,57 @@
         "name": "PBIDesktopVersion",
         "value": "2.130.0.0 (Main)"
       }
+    ],
+    "roles": [
+      {
+        "name": "HR Director",
+        "description": "Group HR: sees all facilities and departments.",
+        "modelPermission": "read"
+      },
+      {
+        "name": "Region Manager - Western",
+        "description": "Western region facilities only (Jeddah, Makkah).",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "DimFacility",
+            "filterExpression": "[Region] = \"Western\""
+          }
+        ]
+      },
+      {
+        "name": "Region Manager - Central",
+        "description": "Central region facilities only (Riyadh).",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "DimFacility",
+            "filterExpression": "[Region] = \"Central\""
+          }
+        ]
+      },
+      {
+        "name": "Region Manager - Eastern",
+        "description": "Eastern region facilities only (Dammam).",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "DimFacility",
+            "filterExpression": "[Region] = \"Eastern\""
+          }
+        ]
+      },
+      {
+        "name": "Clinical Division Manager",
+        "description": "Clinical departments only, all facilities.",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "DimDepartment",
+            "filterExpression": "[Division] = \"Clinical\""
+          }
+        ]
+      }
     ]
   }
 }
